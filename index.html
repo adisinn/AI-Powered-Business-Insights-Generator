@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Business Insights Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .architecture {
+            background: #f0f0f0;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #764ba2;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-badge {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .demo-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            padding: 1rem;
+            border-left: 4px solid #28a745;
+            border-radius: 4px;
+            margin: 1rem 0;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 AI-Powered Business Insights Generator</h1>
+        <p>Automated insight extraction using LLMs + Streamlit | A Final Year Student Project</p>
+    </header>
+    
+    <div class="container">
+        <!-- Problem & Solution -->
+        <section>
+            <h2>The Challenge</h2>
+            <p>Business analysts spend hours reading reports to extract actionable insights—a time-consuming, error-prone process.</p>
+            <p style="margin-top: 1rem;"><strong>Solution:</strong> Automate insight extraction using NLP and Large Language Models, then serve via a conversational dashboard.</p>
+        </section>
+        
+        <!-- Key Features -->
+        <section>
+            <h2>✨ Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>📊 Data Ingestion</h3>
+                    <p>Load reports from CSV files or query data via SQL.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧠 NLP Processing</h3>
+                    <p>Extract key sentences using keyword-based scoring (works offline).</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ LLM Integration</h3>
+                    <p>Call OpenAI APIs for smart insight generation or use rule-based fallback.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 Interactive Dashboard</h3>
+                    <p>Streamlit web app for uploading reports and exploring insights in real-time.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 Power BI Ready</h3>
+                    <p>Export insights and connect to Power BI for executive dashboards.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🧪 Tested & CI/CD</h3>
+                    <p>5 pytest tests + GitHub Actions workflow for continuous integration.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Architecture -->
+        <section>
+            <h2>🏗️ Architecture</h2>
+            <div class="architecture">
+                <pre>┌─────────────────────────────────────────────────┐
+│                User Interface (Streamlit)          │
+│          Upload Reports | Set Parameters           │
+└─────────────────┬───────────────────────────────────┘
+                  │
+        ┌─────────▼──────────┐
+        │  Data Ingestion    │
+        │  (CSV / SQL)       │
+        └─────────┬──────────┘
+                  │
+        ┌─────────▼────────────────┐
+        │  NLP Processing          │
+        │  • Clean text            │
+        │  • Split sentences       │
+        │  • Extract key sentences │
+        └─────────┬────────────────┘
+                  │
+        ┌─────────▼───────────────────┐
+        │  Insight Generation         │
+        │  • LLM call (OpenAI)        │
+        │  • Rule-based fallback      │
+        └─────────┬───────────────────┘
+                  │
+        ┌─────────▼──────────────────┐
+        │  Output & Export           │
+        │  • Dashboard display       │
+        │  • CSV/JSON export         │
+        │  • Power BI integration    │
+        └────────────────────────────┘</pre>
+            </div>
+        </section>
+        
+        <!-- Tech Stack -->
+        <section>
+            <h2>🛠️ Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-badge">Python 3.10+</div>
+                <div class="tech-badge">Streamlit</div>
+                <div class="tech-badge">OpenAI API</div>
+                <div class="tech-badge">Pandas</div>
+                <div class="tech-badge">SQLAlchemy</div>
+                <div class="tech-badge">Pytest</div>
+                <div class="tech-badge">GitHub Actions</div>
+                <div class="tech-badge">Power BI</div>
+            </div>
+        </section>
+        
+        <!-- Quick Start -->
+        <section>
+            <h2>🚀 Quick Start (Windows PowerShell)</h2>
+            <p><strong>Step 1:</strong> Set up virtual environment</p>
+            <pre><code>python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt</code></pre>
+            
+            <p><strong>Step 2:</strong> Configure API key (optional)</p>
+            <pre><code>copy .env.example .env
+# Edit .env and set OPENAI_API_KEY (or use rule-based fallback)</code></pre>
+            
+            <p><strong>Step 3:</strong> Run the app</p>
+            <pre><code>streamlit run app.py</code></pre>
+            
+            <p style="margin-top: 1rem;">Then open: <code>http://localhost:8501</code></p>
+        </section>
+        
+        <!-- Demo Output -->
+        <section>
+            <h2>📋 Demo Output</h2>
+            <p>Running <code>python scripts/demo.py</code> produces:</p>
+            <div class="demo-output">
+Sample rows:
+   id                                        report_text
+0   1  Sales grew 8% this quarter driven by an increase 
+       in online channels. Customer churn decreased...
+1   2  Customer satisfaction dipped in April following 
+       product delays. Refund requests increased...
+
+=== Generating Insights ===
+1) Insight: Sales momentum detected: prioritize scaling
+   Explanation: Recent growth driven by specific channels
+   Metric: Channel-wise revenue, conversion rate
+
+2) Insight: Customer experience risk: investigate churn
+   Explanation: Mentions of churn point to product issues
+   Metric: Churn rate, NPS, refund rate
+
+3) Insight: Supply chain friction: optimize inventory
+   Explanation: Inventory turnover slowed due to delays
+   Metric: Inventory turnover, stockouts
+            </div>
+        </section>
+        
+        <!-- Testing -->
+        <section>
+            <h2>✅ Testing & Validation</h2>
+            <div class="success">
+                <strong>All Tests Pass:</strong> 5/5 pytest tests validate NLP and insight generation logic.
+            </div>
+            <pre><code>.venv\Scripts\python.exe -m pytest tests -q
+.....                                  [100%]
+5 passed in 0.02s</code></pre>
+            
+            <p style="margin-top: 1rem;"><strong>Test Coverage:</strong></p>
+            <ul style="margin-left: 2rem;">
+                <li>Text cleaning and sentence splitting</li>
+                <li>Key sentence extraction with scoring</li>
+                <li>Prompt building and formatting</li>
+                <li>Fallback insight generation without LLM</li>
+                <li>Integration tests for end-to-end flow</li>
+            </ul>
+        </section>
+        
+        <!-- Interview Highlights -->
+        <section>
+            <h2>💼 Interview Talking Points</h2>
+            <div class="highlight">
+                <strong>Why this project stands out:</strong>
+            </div>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li><strong>Real-world problem:</strong> Automates a common analyst workflow—reading and synthesizing reports.</li>
+                <li><strong>Full-stack approach:</strong> Data ingestion → NLP → LLM → Dashboard → BI export.</li>
+                <li><strong>Production-ready:</strong> Includes tests, CI/CD, error handling, and offline fallback.</li>
+                <li><strong>Scalable design:</strong> Easily swap LLM provider, add metrics tracking, or integrate with BI tools.</li>
+                <li><strong>Interview demo-ready:</strong> Run locally without API keys; use rule-based fallback for offline demo.</li>
+                <li><strong>Documentation:</strong> Includes README, prompt templates, Power BI integration guide, and slide deck.</li>
+            </ul>
+        </section>
+        
+        <!-- Files & Resources -->
+        <section>
+            <h2>📁 Project Structure</h2>
+            <pre><code>AIanalyst/
+├── README.md                      # Main documentation
+├── slides.md                      # 10-slide interview deck
+├── PROMPTS.md                     # Prompt templates & examples
+├── PowerBI.md                     # Power BI integration guide
+├── requirements.txt               # Python dependencies
+├── app.py                         # Streamlit dashboard
+├── index.html                     # This website
+├── src/
+│   ├── ingest.py                 # Data loading (CSV/SQL)
+│   ├── nlp.py                    # Text processing & key extraction
+│   ├── insights.py               # Insight generation
+│   └── prompt_templates.py       # LLM prompt templates
+├── scripts/
+│   └── demo.py                   # CLI demo script
+├── sample_data/
+│   └── sample_reports.csv        # Example data
+├── tests/
+│   ├── test_nlp.py              # NLP unit tests
+│   └── test_insights.py         # Insight generation tests
+└── .github/workflows/
+    └── ci.yml                   # GitHub Actions CI/CD</code></pre>
+        </section>
+        
+        <!-- Next Steps -->
+        <section>
+            <h2>🔮 Future Enhancements</h2>
+            <ul style="margin-left: 2rem; line-height: 2;">
+                <li>Add human-in-the-loop feedback loop to improve insight quality over time.</li>
+                <li>Integrate with Slack/Teams for automated daily insight delivery.</li>
+                <li>Add support for multiple LLM providers (GPT-4, Anthropic Claude, local models).</li>
+                <li>Build a metrics dashboard to track key performance indicators over time.</li>
+                <li>Expand NLP to handle multiple languages and domain-specific terminology.</li>
+                <li>Add A/B testing framework to evaluate insight quality and user engagement.</li>
+            </ul>
+        </section>
+        
+        <!-- Call to Action -->
+        <section style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; border: none;">Ready to Get Started?</h2>
+            <p style="margin: 1rem 0; color: #ddd;">Clone the repo or run the demo locally to see it in action.</p>
+            <a href="https://github.com" class="cta-button" style="background: white; color: #667eea;">View on GitHub</a>
+            <a href="#" class="cta-button" style="background: rgba(255, 255, 255, 0.2); border: 2px solid white;">Download Project</a>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 AI-Powered Business Insights Generator | Final Year Student Project</p>
+        <p>Built with Python, Streamlit, and LLM APIs</p>
+    </footer>
+</body>
+</html>
