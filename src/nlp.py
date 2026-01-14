@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
 def clean_text(text: str) -> str:
@@ -74,26 +74,31 @@ def extract_key_sentences(text: str, top_n: int = 5) -> List[str]:
     return [s for _, s in scored[:top_n]]
 
 
-def call_llm(prompt: str, max_tokens: int = 300) -> str:
-    """Call an OpenAI-compatible LLM. When unavailable, returns an informative placeholder.
+def call_llm(prompt: str, max_tokens: int = 1000) -> str:
+    """Call Groq LLM using native Groq SDK with llama-3.3-70b model.
 
-    For demos without a key, callers should implement a fallback path.
+    Groq provides fast inference with Llama 3.3 70B model.
     """
     try:
-        import openai
+        from groq import Groq
     except Exception:
-        return "[LLM unavailable: install openai package to use real LLMs]"
+        return "[Groq library not installed: run 'pip install groq']"
 
-    if not OPENAI_API_KEY:
-        return "[OPENAI_API_KEY not set — set it in your environment to enable LLM calls]"
+    if not GROQ_API_KEY:
+        return "[GROQ_API_KEY not set — set it in your environment to enable LLM calls]"
 
-    openai.api_key = OPENAI_API_KEY
-    resp = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        temperature=0.3,
-        max_tokens=max_tokens,
-        n=1,
-    )
-    text = resp.choices[0].text.strip()
-    return text
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+            max_tokens=max_tokens,
+        )
+        text = resp.choices[0].message.content.strip()
+        return text
+    except Exception as e:
+        # Return detailed error for debugging
+        error_msg = str(e)
+        print(f"[DEBUG] Groq API Error: {error_msg}")
+        return f"[Groq API Error: {error_msg[:100]}]"

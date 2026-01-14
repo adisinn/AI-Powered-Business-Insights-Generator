@@ -6,9 +6,9 @@ from .nlp import extract_key_sentences, call_llm
 def build_prompt(report_text: str, top_n: int = 5, data_summary: Optional[str] = None) -> str:
     key_sentences = '\n'.join(extract_key_sentences(report_text, top_n=top_n))
     prompt = (
-        "You are a helpful business analyst. Given the following key report excerpts, produce:\n"
-        "- 3 concise actionable insights (one sentence each)\n"
-        "- For each insight, provide a short explanation and a suggested metric to track\n\n"
+        f"You are a helpful business analyst. Given the following key report excerpts, produce:\n"
+        f"- {top_n} concise actionable insights (one sentence each)\n"
+        f"- For each insight, provide a short explanation and a suggested metric to track\n\n"
         "Report excerpts:\n"
         + key_sentences
     )
@@ -54,7 +54,4 @@ def _fallback_generate_insights(report_text: str) -> str:
 def generate_insights(report_text: str, data_summary: Optional[str] = None, top_n: int = 5) -> str:
     prompt = build_prompt(report_text, top_n=top_n, data_summary=data_summary)
     llm_out = call_llm(prompt)
-    # detect LLM-unavailable messages and fall back
-    if llm_out.startswith("["):
-        return _fallback_generate_insights(report_text)
     return llm_out
